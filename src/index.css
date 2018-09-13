@@ -105,5 +105,6 @@ body {
 
 
 .comment-createdtime{
-  padding: 0 0 0 100px;
+  color: red;
+  margin: 0 0 0 10px;
 }

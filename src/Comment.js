@@ -11,23 +11,37 @@ class Comment extends Component{
         this.state={
             timeString:''
         }
+        this.hanleMouseOut=this.hanleMouseOut.bind(this);
+        this.hanleMouseOver = this.hanleMouseOver.bind(this);
+        // this.hanleDelet =this.hanleDelet.bind(this);
     }
-
     componentWillMount () {
-        this._updateTimeString()
         this._timer = setInterval(
           this._updateTimeString,
           5000
         )
     }
 
+    componentDidMount(){
+        this.hanleMouseOut();
+    }
+
     componentWillUnmount(){
         clearInterval(this._timer);
     }
 
+
     componentWillMount(){
         this._updateTimeString();
     }
+
+    hanleMouseOut(){
+        this.butt.style.visibility="hidden";
+    }
+
+    hanleMouseOver(){
+        this.butt.style.visibility="visible";
+    } 
 
     _updateTimeString (){
         const comment = this.props.comment;
@@ -43,15 +57,16 @@ class Comment extends Component{
 
     render(){
         return(
-            <div className='comment'>
+            <div className='comment' onMouseOut={this.hanleMouseOut} onMouseOver={this.hanleMouseOver}>
                 <div className='comment-user'>
                     <span className="user">{this.props.comment.username} </span>：
                     <span className="content">{this.props.comment.content}</span>
                 </div>
                 
-                <span className='comment-createdtime'>
+                <div >
                     {this.state.timeString}
-                </span>
+                    <button className='comment-createdtime' ref={(button)=> this.butt = button} >删除</button>
+                </div>
             </div>
         );
     }

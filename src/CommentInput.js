@@ -2,8 +2,8 @@ import React , {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class CommentInput extends Component{
-    static PropTypes = {
-        onSubmit:PropTypes.func
+    static propTypes =  {
+        onSubmit: PropTypes.func
     }
 
     constructor () {
@@ -19,7 +19,7 @@ class CommentInput extends Component{
       }
 
     componentDidMount(){
-        this.textarea.foucs();
+        this.textarea.focus()
     }  
 
     componentWillMount(){
@@ -32,6 +32,11 @@ class CommentInput extends Component{
             this.setState({'username':username})
         }
     }
+
+    handleUsernameBlur(event){
+        this._saveUsername(event.target.value)
+    }
+
 
     _saveUsername(username){
         localStorage.setItem('username',username);
@@ -67,7 +72,7 @@ class CommentInput extends Component{
         <div className='comment-field'>
           <span className='comment-field-name'>评论内容：</span>
           <div className='comment-field-input'>
-            <textarea value={this.state.content} onChange={this.handleContentChange} ref={(textarea)=> this.tes
+            <textarea value={this.state.content} onChange={this.handleContentChange} ref={(textarea)=> this.textarea
             =textarea}/>
           </div>
         </div>

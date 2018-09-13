@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class Comment extends Component{
-    static PropTypes = {
+    static propTypes =  {
         comment:PropTypes.object
     }
     

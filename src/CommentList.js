@@ -3,7 +3,7 @@ import Comment from './Comment';
 import PropTypes from 'prop-types';
 
 class CommentList extends Component{
-    static PropTypes = {
+    static propTypes =  {
         comments:PropTypes.array
     }
 

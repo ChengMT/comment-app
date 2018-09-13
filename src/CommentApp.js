@@ -11,6 +11,22 @@ class CommentApp extends Component{
         this.handleSubmitComment=this.handleSubmitComment.bind(this);
     }
 
+    componentWillMount () {
+        this._loadComments()
+    }
+
+    
+      _loadComments () {
+        let comments = localStorage.getItem('comments');
+        if (comments) {
+          this.setState({comments:JSON.parse(comments)});
+        }
+      }
+    
+      _saveComments (comments) {
+        localStorage.setItem('comments', JSON.stringify(comments))
+      }
+
     handleSubmitComment(commet){
         if (!commet){
             return
@@ -22,7 +38,10 @@ class CommentApp extends Component{
             return alert('请输入评论内容')
         };
         this.state.comments.push(commet);
+        
         this.setState({comments:this.state.comments});
+        this._saveComments(this.state.comments);
+        console.log(localStorage.getItem('comments'));
         
     }
 

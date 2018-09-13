@@ -9,6 +9,7 @@ class CommentApp extends Component{
             comments:[]
         }
         this.handleSubmitComment=this.handleSubmitComment.bind(this);
+        this.handleDe=this.handleDe.bind(this);
     }
 
     componentWillMount () {
@@ -45,11 +46,19 @@ class CommentApp extends Component{
         
     }
 
+    handleDe(index){
+        let comments =this.state.comments;
+        comments.splice(index,1);
+        this.setState({comments});
+        this._saveComments(comments);
+    }
+
     render(){
         return(
             <div className='wrapper'>
                 <CommentInput onSubmit={this.handleSubmitComment}/>
-                <CommentList comments={this.state.comments}/>
+                <CommentList comments={this.state.comments} 
+                handleDelete={this.handleDe}/>
             </div>
         );
     }

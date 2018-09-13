@@ -13,7 +13,7 @@ class Comment extends Component{
         }
         this.hanleMouseOut=this.hanleMouseOut.bind(this);
         this.hanleMouseOver = this.hanleMouseOver.bind(this);
-        // this.hanleDelet =this.hanleDelet.bind(this);
+        this.hanleDelet =this.hanleDelet.bind(this);
     }
     componentWillMount () {
         this._timer = setInterval(
@@ -54,6 +54,11 @@ class Comment extends Component{
         })
     }
 
+    hanleDelet(){
+        if(this.props.hanleDeletChange){
+            this.props.hanleDeletChange(this.props.index);
+        }
+    }
 
     render(){
         return(
@@ -65,7 +70,7 @@ class Comment extends Component{
                 
                 <div >
                     {this.state.timeString}
-                    <button className='comment-createdtime' ref={(button)=> this.butt = button} >删除</button>
+                    <button className='comment-createdtime' ref={(button)=> this.butt = button} onClick={this.hanleDelet}>删除</button>
                 </div>
             </div>
         );

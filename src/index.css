@@ -86,18 +86,24 @@ body {
   margin-bottom: 10px;
   padding-bottom: 10px;
   min-height: 50px;
+  justify-content:space-between;
 }
 
 .comment .comment-user {
   flex-shrink: 0;
 }
 
-.comment span {
+.user {
   color: #00a3cf;
   font-style: italic;
 }
 
-.comment p {
+.content {
   margin: 0;
   /*text-indent: 2em;*/
+}
+
+
+.comment-createdtime{
+  padding: 0 0 0 100px;
 }

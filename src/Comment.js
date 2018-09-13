@@ -33,9 +33,10 @@ class Comment extends Component{
         return(
             <div className='comment'>
                 <div className='comment-user'>
-                    <span>{this.props.comment.username} </span>：
+                    <span className="user">{this.props.comment.username} </span>：
+                    <span className="content">{this.props.comment.content}</span>
                 </div>
-                <p>{this.props.comment.content}</p>
+                
                 <span className='comment-createdtime'>
                     {this.state.timeString}
                 </span>

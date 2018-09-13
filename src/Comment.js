@@ -14,6 +14,7 @@ class Comment extends Component{
         this.hanleMouseOut=this.hanleMouseOut.bind(this);
         this.hanleMouseOver = this.hanleMouseOver.bind(this);
         this.hanleDelet =this.hanleDelet.bind(this);
+        this._getProcessedContent =this._getProcessedContent.bind(this);
     }
     componentWillMount () {
         this._timer = setInterval(
@@ -60,12 +61,23 @@ class Comment extends Component{
         }
     }
 
+    _getProcessedContent(content){
+        return content
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;")
+        .replace(/`([\S\s]+?)`/g, '<code>$1</code>')
+    }
+
     render(){
         return(
             <div className='comment' onMouseOut={this.hanleMouseOut} onMouseOver={this.hanleMouseOver}>
                 <div className='comment-user'>
                     <span className="user">{this.props.comment.username} </span>：
-                    <span className="content">{this.props.comment.content}</span>
+                    <span className="content" dangerouslySetInnerHTML={{ __html: this._getProcessedContent(this.props.comment.content)}} />
+
                 </div>
                 
                 <div >

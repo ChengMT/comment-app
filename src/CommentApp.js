@@ -42,8 +42,6 @@ class CommentApp extends Component{
         
         this.setState({comments:this.state.comments});
         this._saveComments(this.state.comments);
-        console.log(localStorage.getItem('comments'));
-        
     }
 
     handleDe(index){

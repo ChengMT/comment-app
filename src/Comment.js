@@ -13,6 +13,18 @@ class Comment extends Component{
         }
     }
 
+    componentWillMount () {
+        this._updateTimeString()
+        this._timer = setInterval(
+          this._updateTimeString,
+          5000
+        )
+    }
+
+    componentWillUnmount(){
+        clearInterval(this._timer);
+    }
+
     componentWillMount(){
         this._updateTimeString();
     }
